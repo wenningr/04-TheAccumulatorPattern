@@ -209,7 +209,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -337,7 +337,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -354,17 +354,29 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     rectangle2.attach_to(window)
     window.render()
 
-    Point1
+    a = rectangle1.get_center().x - rectangle1.get_lower_left_corner().x
+    b = rectangle1.get_center().y - rectangle1.get_lower_left_corner().y
+
+    for k in range(n):
 
 
-    for _ in range(n):
-        line1 = rg.Line(rectangle1.get_center(), rectangle2.get_center())
+        point1 = rg.Point(rectangle1.get_center().x-(2*k*a), rectangle1.get_center().y-(2*k*b))
+        point2 = rg.Point(rectangle2.get_center().x-(2*k*a), rectangle2.get_center().y-(2*k*b))
+        point3 = rg.Point(rectangle1.get_lower_left_corner().x-(2*k*a), rectangle1.get_lower_left_corner().y-(2*k*b))
+        point4 = rg.Point(rectangle2.get_center().x-(((2*k)+(1))*a), rectangle2.get_center().y-(((2*k)+(1))*b))
+
+        line1 = rg.Line(point1, point2)
         line1.color = rectangle1.outline_color
         line1.thickness = 5
 
-        line1.attach_to(window)
+        line2 = rg.Line(point3, point4)
+        line2.color = rectangle2.outline_color
+        line2.thickness = 5
 
-        #line2
+
+        line1.attach_to(window)
+        line2.attach_to(window)
+
     window.render()
 
 # -----------------------------------------------------------------------------
